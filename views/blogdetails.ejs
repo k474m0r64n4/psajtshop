@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <% include partials/scripts.ejs %>
+    <!-- Document Title
+        ============================================= -->
+    <title>Psajt - <%= title %></title>
+</head>
+<body class="page-dark">
+<div class="preloader">
+    <div class="load-bar">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</div><!-- Document Wrapper
+	============================================= -->
+<div id="wrapper" class="wrapper clearfix">
+    <% include partials/header.ejs %>
+
+    <section id="tabs2" class="tabs tabs-2 text-center bg-white" style="padding-bottom: 0px">
+        <% include partials/kategorije.ejs %>
+        <!-- .container end -->
+    </section> <!-- #tabs2 end -->
+
+    <section id="portfolio" class="portfolio portfolio-single bg-white">
+        <div class="container">
+            <div class="row">
+                <% if(data){%>
+                <% data.forEach(function (novost) {  %>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="portfolio--img">
+                        <img src="/images/blog/<%= novost.image %>" alt="portfolio image">
+
+                    </div><!-- .portfolio--img end -->
+                </div><!-- .col-md-8 end -->
+                <div class="col-xs-12 col-sm-12 col-md-6 portfolio--title text--left">
+                    <h3><%= novost.title %></h3>
+                    <div class="entry--meta">
+                        <span class="entry--meta-date"><%= moment(novost.createdOn).format("Do MMM YYYY");%></span>
+                        <span class="entry--meta-comments">Komentari: <a href="#comm" style="color: #7c1212">666</a></span>
+                        <span class="entry--meta-cat"><a href="/novosti/cat/1" style="color: <%= novost.color %>"><%= novost.category %></a></span>
+                    </div>
+                </div>
+                <div class="entry--content text--left" >
+
+                    <div class="entry--bio">
+                        <%- novost.content_text %>
+
+                    </div>
+
+                </div>
+
+                <div class="portfolio--share" style="padding: 10px">
+                    <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fpsajt.org%2Fnovosti%2F<%= novost.slug %>&layout=button&size=small&width=60&height=20&appId" width="60" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                </div>
+                <div class="widget-tags" style="padding: 10px;  background-color: #222;">
+                    <span class="widget--title">Tags: </span>
+                    <% novost.tags.forEach(function (tag) { %>
+                    <a href="/tags/"><%= tag %></a>
+                    <%  }) %>
+                </div>
+                <% })} %>
+
+                <div class="col-xs-12 col-sm-12 col-md-10 text--left" id="comm">
+                    <div class="row" style="padding-top: 30px">
+                        <div class="col-xs-12 col-sm-12 col-md-8 ">
+
+                            <div class="entry-content entry-comments clearfix">
+                                <div class="entry-widget-title">
+                                    <h4 >Komentari</h4>
+                                </div>
+                                <div class="entry-widget-content">
+                                    <ul class="comments-list">
+
+
+                                        <li class="comment-body">
+                                            <div class="avatar">
+                                                <img src="/assets/images/team/thumb/2.png" alt="avatar"/>
+                                            </div>
+                                            <div class="comment">
+                                                <h6>boris</h6>
+                                                <div class="date">5454</div>
+                                                <p>gfddfg</p>
+                                                <a class="reply" href="#">reply</a>
+                                            </div>
+                                        </li>
+                                        <!-- comment end -->
+
+                                    </ul>
+                                    <!-- .comments-list end -->
+                                </div>
+                            </div>
+                            <!-- .entry-comments end -->
+
+                            <div class="entry-content entry-add-comment mb-0 clearfix" style="padding-top: 100px">
+                                <div class="entry-widget-title">
+                                    <h4>Ostavite komentar</h4>
+                                </div>
+                                <div class="entry-widget-content">
+                                    <form id="post-comment" class="mb-0" action="/comment/<%= data[0]._id %>" method="post" >
+                                        <div class="row">
+
+                                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                                <input type="text" class="form-control" id="username" name="username" placeholder="Ime:"/>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                                <input type="email" class="form-control" id="email" name="email" placeholder="Email:"/>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <textarea class="form-control" id="comText" name="comText" rows="3" placeholder="Komentar"></textarea>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <button type="submit" class="btn btn--secondary btn--block">Pošalji</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12" style="padding-top: 100px">
+
+                    <div class="row ">
+                        <h2 class="heading--title">Najpopularnije</h2>
+                        <!-- Blog Entry #1 -->
+                        <% if(popular){ %>
+                        <% popular.forEach(function (novost) { %>
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="blog-entry">
+                                <div class="entry--img">
+                                    <a href="/novosti/<%= novost.slug %>">
+                                        <img src="/images/blog/<%= novost.image %>" alt="entry image"/>
+                                    </a>
+                                </div>
+                                <div class="entry--content">
+                                    <div class="entry--meta">
+                                        <span class="entry--meta-date"><%= moment(novost.createdOn).format("Do MMM YYYY");%></span>
+                                        <span class="entry--meta-cat"><a href="/novosti?category=<%= novost.category %>"><%= novost.category %></a></span>
+                                    </div>
+                                    <div class="entry--title">
+                                        <h4><a href="/novosti/<%= novost.slug %>"><%= novost.title %></a></h4>
+                                    </div>
+                                    <div class="entry--bio">
+                                        <%- novost.description %>
+                                    </div>
+
+                                </div>
+                                <!-- .entry-content end -->
+                            </div>
+                            <!-- .blog-entry end -->
+                        </div>
+                        <% })} %>
+                        <!-- .col-md-4 end -->
+
+
+
+                    </div>
+                </div>
+            </div><!-- .row end -->
+        </div><!-- .container end -->
+    </section><!-- #portfolio end -->
+
+    <!-- Footer #1
+    ============================================= -->
+    <% include partials/footer.ejs %>
+</div><!-- #wrapper end -->
+<div id="gotoTop" class="fa fa-angle-up"></div>
+
+<!-- Footer Scripts
+============================================= -->
+<script src="/assets/js/jquery-2.2.4.min.js"></script>
+<script src="/assets/js/plugins.js"></script>
+<script src="/assets/js/functions.js"></script>
+<script src="/js/functions.js"></script>
+
+<!-- RS5.0 Core JS Files -->
+<script src="/assets/revolution/js/jquery.themepunch.tools.min.js?rev=5.0"></script>
+<script src="/assets/revolution/js/jquery.themepunch.revolution.min.js?rev=5.0"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<!-- RS Confi/gration JS Files -->
+<script src="/assets/js/rsconfig.js"></script>
+</body>
+</html>

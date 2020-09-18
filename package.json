@@ -1,0 +1,27 @@
+{
+  "name": "psajtshop",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "ckeditor": "^4.12.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-fileupload": "^1.1.10",
+    "express-mongo-db": "^2.0.4",
+    "express-session": "^1.17.1",
+    "http-errors": "~1.6.3",
+    "mongodb": "^3.6.0",
+    "mongoose": "^5.9.28",
+    "morgan": "~1.9.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pm2": "^4.4.0",
+    "slug": "^3.3.4"
+  }
+}

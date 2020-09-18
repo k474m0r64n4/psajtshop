@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="95b70f48-054a-4160-a8bd-c5c273173786" name="Default" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>500px</find>
+      <find>modal-content</find>
+      <find>max-width: 500px</find>
+    </findStrings>
+    <dirStrings>
+      <dir>G:\Documents\GitHub\psajtshop</dir>
+    </dirStrings>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="ProjectId" id="1ggFiMgqhgQkDbzXIBpECXmKEKL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.18.3" />
+    <property name="javascript.nodejs.core.library.typings.version" value="12.12.54" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tasks" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Documents\GitHub\psajtshop\views\partials" />
+      <recent name="G:\Documents\GitHub\psajtshop\public\js" />
+      <recent name="G:\Documents\GitHub\psajtshop\public" />
+      <recent name="G:\Documents\GitHub\psajtshop\public\css" />
+      <recent name="G:\Documents\GitHub\psajtshop\routes" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\Documents\GitHub\psajtshop\public\css" />
+      <recent name="G:\Documents\GitHub\psajtshop\public\js" />
+      <recent name="G:\Documents\GitHub\psajtshop\public" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="95b70f48-054a-4160-a8bd-c5c273173786" name="Default" comment="" />
+      <created>1597338271351</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1597338271351</updated>
+      <workItem from="1597338285476" duration="35127000" />
+      <workItem from="1598287760258" duration="15023000" />
+      <workItem from="1598528456267" duration="12155000" />
+      <workItem from="1600272653954" duration="5629000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="779" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1599649366735">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="779" y="311" width="424" height="491" key="FileChooserDialogImpl/72.27.1848.1053@72.27.1848.1053" timestamp="1599649366735" />
+    <state width="1825" height="137" key="GridCell.Tab.0.bottom" timestamp="1600422859684">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1825" height="137" key="GridCell.Tab.0.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1600422859684" />
+    <state width="1825" height="137" key="GridCell.Tab.0.center" timestamp="1600422859682">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1825" height="137" key="GridCell.Tab.0.center/72.27.1848.1053@72.27.1848.1053" timestamp="1600422859682" />
+    <state width="1825" height="137" key="GridCell.Tab.0.left" timestamp="1600422859681">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1825" height="137" key="GridCell.Tab.0.left/72.27.1848.1053@72.27.1848.1053" timestamp="1600422859681" />
+    <state width="1825" height="137" key="GridCell.Tab.0.right" timestamp="1600422859683">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1825" height="137" key="GridCell.Tab.0.right/72.27.1848.1053@72.27.1848.1053" timestamp="1600422859683" />
+  </component>
+</project>

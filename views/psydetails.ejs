@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <% include partials/scripts.ejs %>
+    <!-- Document Title
+        ============================================= -->
+    <title>Psajt - <%= title %></title>
+</head>
+<body class="page-dark">
+<div class="preloader">
+    <div class="load-bar">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</div><!-- Document Wrapper
+	============================================= -->
+<div id="wrapper" class="wrapper clearfix">
+    <% include partials/header.ejs %>
+
+    <section id="portfolio" class="portfolio portfolio-single bg-white">
+        <div class="container">
+            <% if(data){ %>
+            <% data.forEach(function (psy) { %>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="portfolio--title">
+                        <h3><%= psy.name %> <% psy.subname %></h3>
+
+                    </div>
+                    <div class="portfolio--img">
+                        <img src="/images/psihodelici/<%= psy.image %>" alt="portfolio image">
+
+                    </div><!-- .portfolio--img end -->
+                </div><!-- .col-md-8 end -->
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="portfolio--list">
+                        <div class="col-xs-12 col-sm-12 col-md-12 singlenav">
+                            <ul class="list-inline mb-0">
+                                <li><a href="#istorijat">Istorijat</a></li>
+                                <li><a href="#upotreba">Upotreba</a></li>
+                                <li><a href="#efekti">Efekti</a></li>
+                                <li><a href="#farmakologija">Farmakologija</a></li>
+                                <li><a href="#mitovi">Mitovi</a></li>
+                                <li><a href="#svojstva">Svojstva</a></li>
+                                <li><a href="#doziranje">Doziranje</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+            <div class="row">
+
+
+                <div class="col-xs-12 col-sm-12 col-md-8">
+                    <div class="col-xs-12 col-sm-12 col-md-12"  id="svojstva" style="padding-top: 105px" >
+                        <div class="portfolio--title">
+                            <h3>Ukratko</h3>
+
+                        </div>
+                    </div><!-- .col-md-12 end -->
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="portfolio--content">
+                            <%- psy.info.overview %>
+                        </div><!-- .portfolio--content end -->
+                    </div><!-- .col-md-6 end -->
+                    <div class="col-xs-12 col-sm-12 col-md-12" id="istorijat" style="padding-top: 105px"  >
+                        <div class="portfolio--title">
+                            <h3>Istorijat</h3>
+
+                        </div>
+                    </div><!-- .col-md-12 end -->
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="portfolio--content">
+                            <%- psy.info.history %>
+                        </div><!-- .portfolio--content end -->
+                    </div><!-- .col-md-6 end -->
+                    <div class="col-xs-12 col-sm-12 col-md-12" id="upotreba" style="padding-top: 105px" >
+                        <div class="portfolio--title">
+                            <h3>Farmakolofija</h3>
+
+                        </div>
+                    </div><!-- .col-md-12 end -->
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="portfolio--content">
+                            <%- psy.info.pharmacology %>
+                        </div><!-- .portfolio--content end -->
+                    </div><!-- .col-md-6 end -->
+
+                    <div class="col-xs-12 col-sm-12 col-md-12"  id="efekti" style="padding-top: 105px" >
+                        <div class="portfolio--title">
+                            <h3>Efekti</h3>
+
+                        </div>
+                    </div><!-- .col-md-12 end -->
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="portfolio--content">
+                            <%- psy.info.effects %>
+                        </div><!-- .portfolio--content end -->
+                    </div><!-- .col-md-6 end -->
+
+                    <div class="col-xs-12 col-sm-12 col-md-12"  id="farmakologija" style="padding-top: 105px" >
+                        <div class="portfolio--title">
+                            <h3>Mitovi</h3>
+
+                        </div>
+                    </div><!-- .col-md-12 end -->
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="portfolio--content">
+                            <%- psy.info.myths %>
+                        </div><!-- .portfolio--content end -->
+                    </div><!-- .col-md-6 end -->
+
+                    <div class="col-xs-12 col-sm-12 col-md-12"  id="mitovi" style="padding-top: 105px" >
+                        <div class="portfolio--title">
+                            <h3>Terapijska svojstva</h3>
+
+                        </div>
+                    </div><!-- .col-md-12 end -->
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="portfolio--content">
+                            <%- psy.info.therapeuticuse %>
+                        </div><!-- .portfolio--content end -->
+                    </div><!-- .col-md-6 end -->
+
+
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-4" >
+                    <div class="portfolio--list" >
+                        <ul class="list-unstyled mb-0">
+                            <li><div class="portfolio--img">
+                                    <img src="/images/psihodelici/<%= psy.molecul %>" alt="portfolio image">
+
+                                </div><!-- .portfolio--img end --></li>
+                            <li id="doziranje"><span>Naziv: </span><%= psy.nazivi %></li>
+                            <li><span>Formula: </span><%= psy.formula %></li>
+
+
+                        </ul>
+                    </div>
+                    <div class="portfolio--list">
+
+                        <ul class="list-unstyled mb-0">
+                            <li><h6>Doziranje</h6></li>
+                            <li><span>Threshold: </span><%= psy.dose.threshold %></li>
+                            <li><span>Light: </span><%= psy.dose.light %></li>
+                            <li><span>Common: </span><%= psy.dose.common %></li>
+                            <li><span>Strong: </span><%= psy.dose.strong %></li>
+                            <li><span>Heavy: </span><%= psy.dose.heavy %></li>
+                            <br>
+                            <li><h6>Trajanje</h6></li>
+                            <li><span>Total: </span><%= psy.duration.total %></li>
+                            <li><span>Onset: </span><%= psy.duration.onset %></li>
+                            <li><span>Come up: </span><%= psy.duration.comeup %></li>
+                            <li><span>Peak: </span><%= psy.duration.peak %></li>
+                            <li><span>Offset: </span><%= psy.duration.offset %></li>
+                            <li><span>After effects: </span><%= psy.duration.after %></li>
+                        </ul>
+                    </div>
+                    <div class="portfolio--list">
+
+                        <ul class="list-unstyled mb-0">
+                            <li><h6>Quick link</h6></li>
+
+                            <li><a href="/psihodelici">lsd</a></li>
+
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <% });} %>
+        </div><!-- .container end -->
+    </section><!-- #portfolio end -->
+
+
+
+    <!-- Footer #1
+    ============================================= -->
+    <% include partials/footer.ejs %>
+</div><!-- #wrapper end -->
+<div id="gotoTop" class="fa fa-angle-up"></div>
+<!-- Footer Scripts
+============================================= -->
+<script src="/assets/js/jquery-2.2.4.min.js"></script>
+<script src="/assets/js/plugins.js"></script>
+<script src="/assets/js/functions.js"></script>
+<script src="/js/functions.js"></script>
+<!-- RS5.0 Core JS Files -->
+<script src="/assets/revolution/js/jquery.themepunch.tools.min.js?rev=5.0"></script>
+<script src="/assets/revolution/js/jquery.themepunch.revolution.min.js?rev=5.0"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<!-- RS Confi/gration JS Files -->
+<script src="/assets/js/rsconfig.js"></script>
+</body>
+</html>

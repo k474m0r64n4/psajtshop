@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <% include partials/scripts.ejs %>
+    <!-- Document Title
+        ============================================= -->
+    <title>Psajt - <%= title %></title>
+</head>
+<body class="page-dark">
+<div class="preloader">
+    <div class="load-bar">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</div><!-- Document Wrapper
+	============================================= -->
+<div id="wrapper" class="wrapper clearfix">
+    <% include partials/header.ejs %>
+
+
+    <!-- Shop Product Right Sidebar
+    ============================================= -->
+    <section id="product" class="shop shop-product bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12  col-md-9">
+                    <!-- Alert Message -->
+                    <div class="alerts">
+                        <div class="alert-icon">
+                            <i class="fa fa-check-circle"></i>
+                        </div>
+                        <div class="alert-content">
+                            <h4>Item Was Successfully Added To Your Cart.</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie.</p>
+                        </div>
+                    </div>
+                    <!-- .aret end -->
+
+                    <% if (data) {%>
+                    <% data.forEach(function (item){ %>
+                    <div class="product-img mb-50">
+                        <img class="img-responsive" src="/images/items/<%= item.image %>" alt="product image">
+                    </div>
+                    <!-- .product-img end -->
+                    <div class="product-title">
+                        <h3><%= item.name %></h3>
+                    </div>
+                    <!-- .product-title end -->
+                    <div class="product-meta mb-30">
+                        <div class="product-price pull-left pull-none-xs">
+                            <%= item.price%> RSD
+                        </div>
+                        <!-- .product-price end -->
+                        <div class="product-review text-right text-center-xs">
+                        <span class="product-rating">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star-half-o"></i>
+							<i class="fa fa-star-o"></i>
+							</span>
+                            <span>5 Review(s)</span> /
+                            <span>
+							<a href="#">Add Review</a>
+							</span>
+                        </div>
+                        <!--- .product-review end -->
+                    </div>
+                    <div class="product-desc">
+                        <p><%- item.description %></p>
+                    </div>
+                    <!-- .product-desc end -->
+                    <hr>
+                    <div class="product-details">
+
+                        <h5>Other Details :</h5>
+                        <ul class="list-unstyled">
+                            <li>Kategorija : <span><%= item.category %></span></li>
+                            <li>Status : <span><%= item.status%></span></li>
+                            <li>Tags : <span><%= item.tags %></span></li>
+                        </ul>
+                    </div>
+                    <!-- .product-details end -->
+                    <hr>
+                    <div class="product-action clearfix">
+                        <div class="product-quantity pull-left pull-none-xs">
+                            <span class="qua">Quantity:</span>
+                            <span> <a href="#"><i class="fa fa-minus"></i></a>
+					<input type="text" value="2" id="pro-qunt" readonly>
+					<a href="#"><i class="fa fa-plus"></i></a> </span>
+                        </div>
+                        <div class="product-cta text-right text-center-xs">
+                            <a class="btn btn--primary btn--rounded" href="#">add to cart</a>
+                            <a class="btn btn--secondary btn--rounded" href="#">add to wishlist</a>
+                            <a class="btn btn--secondary btn--rounded" href="#">compare</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- .product-action end -->
+                    <div class="product-share">
+                        <h5 class="share-title">share product: </h5>
+                        <a class="share-facebook" href="#"><i class="fa fa-facebook"></i></a>
+                        <a class="share-twitter" href="#"><i class="fa fa-twitter"></i></a>
+                        <a class="share-google-plus" href="#"><i class="fa fa-google-plus"></i></a>
+                        <a class="share-linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                    <!-- .product-share end -->
+                    <div class="product-tabs">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">description</a></li>
+                            <li role="presentation"><a href="#details" aria-controls="details" role="tab" data-toggle="tab">details</a></li>
+                            <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">reviews(2)</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="description">
+                                <%- item.content_text %>
+                            </div>
+                            <!-- #description end -->
+                            <div role="tabpanel" class="tab-pane" id="details">
+                                <h5>Technical Details</h5>
+                                <table class="table table-striped">
+                                    <tbody>
+                                    <tr>
+                                        <td>Part Number</td>
+                                        <td>60-MCTE</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Item Weight</td>
+                                        <td>54 pounds</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Product Dimensions</td>
+                                        <td>92.8 x 92.8 x 92.8 inches</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Item model number</td>
+                                        <td>60-MCTE</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Item Package Quantity</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Number of Handles</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Batteries Required?</td>
+                                        <td>No</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- #details end -->
+                            <div role="tabpanel" class="tab-pane reviews" id="reviews">
+                                <ul class="product-review list-unstyled">
+                                    <li class="review-comment">
+                                        <h6>Mostafa Amin</h6>
+                                        <p class="review-date">22/02/2016</p>
+                                        <div class="product-rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
+                                        </div>
+                                        <div class="product-comment">
+                                            <p>Lorem ipsum dolor sit amet, mauris suspendisse viverra eleifend tortor tellus suscipit, tortor aliquet at nulla mus, dignissim neque, nulla neque. Ultrices proin mi urna nibh ut, aenean sollicitudin etiam libero nisl, ultrices ridiculus in magna purus consequuntur, ipsum donec orci ad vitae pede, id odio.</p>
+                                        </div>
+                                    </li>
+                                    <!-- .review-comment end -->
+
+                                    <li class="review-comment">
+                                        <h6>Mohamed Habaza</h6>
+                                        <p class="review-date">21/02/2016</p>
+                                        <div class="product-rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        </div>
+                                        <div class="product-comment">
+                                            <p>Lorem ipsum dolor sit amet, mauris suspendisse viverra eleifend tortor tellus suscipit, tortor aliquet at nulla mus, dignissim neque, nulla neque. Ultrices proin mi urna nibh ut, aenean sollicitudin etiam libero nisl, ultrices ridiculus in magna purus consequuntur, ipsum donec orci ad vitae pede, id odio.</p>
+                                        </div>
+                                    </li>
+                                    <!-- .review-comment end -->
+                                </ul>
+                                <div class="form-review">
+                                    <form>
+                                        <input type="text" class="form-control" id="name" placeholder="Your Name" />
+                                        <input type="email" class="form-control" id="email" placeholder="Your Email" />
+                                        <select class="form-control">
+                                            <option selected value="Default">Your Rating</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <textarea class="form-control" id="review" rows="2" placeholder="your Review"></textarea>
+                                        <button type="submit" class="btn btn--primary btn-block">Post Your review</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- #reviews end -->
+                        </div>
+                        <!-- #tab-content end -->
+                    </div>
+                    <!-- .product-tabs end -->
+                    <% })} %>
+
+                    <div class="product-related shop-categories">
+                        <div class="product-related-title">
+                            <h5>Related Products</h5>
+                        </div>
+                        <div class="row">
+
+                            <!-- Product #1 -->
+                            <div class="col-xs-12 col-sm-4 col-md-4 product-item">
+                                <div class="product--img">
+                                    <img src="/assets/images/shop/grid/1.jpg" alt="Product" />
+                                    <div class="product--hover">
+                                        <div class="product--action">
+                                            <a href="#">Add To Cart</a>
+                                        </div>
+                                    </div>
+                                    <!-- .product-overlay end -->
+                                </div>
+                                <!-- .product-img end -->
+                                <div class="product--content">
+                                    <div class="product--title">
+                                        <h3><a href="#">Le Coq Sportif Triangle T-Shirt</a></h3>
+                                    </div>
+                                    <!-- .product-title end -->
+                                    <div class="product--price">
+                                        <span>$18.00</span>
+                                    </div>
+                                    <!-- .product-price end -->
+                                </div>
+                                <!-- .product-bio end -->
+                            </div>
+                            <!-- .product end -->
+
+                            <!-- Product #2 -->
+                            <div class="col-xs-12 col-sm-4 col-md-4 product-item">
+                                <div class="product--img">
+                                    <img src="/assets/images/shop/grid/2.jpg" alt="Product" />
+                                    <div class="product--hover">
+                                        <div class="product--action">
+                                            <a href="#">Add To Cart</a>
+                                        </div>
+                                    </div>
+                                    <!-- .product-overlay end -->
+                                </div>
+                                <!-- .product-img end -->
+                                <div class="product--content">
+                                    <div class="product--title">
+                                        <h3><a href="#">Tiger Mexicotion Sneakers</a></h3>
+                                    </div>
+                                    <!-- .product-title end -->
+                                    <div class="product--price">
+                                        <span>$83.00</span>
+                                    </div>
+                                    <!-- .product-price end -->
+                                </div>
+                                <!-- .product-bio end -->
+                            </div>
+                            <!-- .product end -->
+
+                            <!-- Product #3 -->
+                            <div class="col-xs-12 col-sm-4 col-md-4 product-item">
+                                <div class="product--img">
+                                    <img src="/assets/images/shop/grid/3.jpg" alt="Product" />
+                                    <div class="product--hover">
+                                        <div class="product--action">
+                                            <a href="#">Add To Cart</a>
+                                        </div>
+                                    </div>
+                                    <!-- .product-overlay end -->
+                                </div>
+                                <!-- .product-img end -->
+                                <div class="product--content">
+                                    <div class="product--title">
+                                        <h3><a href="#">Penguin Skinny Chinos</a></h3>
+                                    </div>
+                                    <!-- .product-title end -->
+                                    <div class="product--price">
+                                        <span>$45.00</span>
+                                    </div>
+                                    <!-- .product-price end -->
+                                </div>
+                                <!-- .product-bio end -->
+                            </div>
+                            <!-- .product end -->
+
+                        </div>
+                        <!-- .row end -->
+                    </div>
+                    <!-- .product-related end  -->
+
+                </div>
+                <!-- .product-item end -->
+                <div class="col-xs-12 col-sm-12  col-md-3 sidebar-full">
+                    <!-- Search
+    ============================================= -->
+                    <div class="widget widget-search">
+                        <div class="widget--content">
+                            <form class="form-search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Type and hit enter ...">
+                                    <span class="input-group-btn">
+					<button class="btn" type="button"><i class="fa fa-search"></i></button>
+				</span>
+                                </div>
+                                <!-- /input-group -->
+                            </form>
+                        </div>
+                    </div> <!-- .widget-search end -->
+
+                    <!-- Categories
+                    ============================================= -->
+                    <div class="widget widget-categories">
+                        <div class="widget--title">
+                            <h5>categories</h5>
+                        </div>
+                        <div class="widget--content">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="#">Accessories</a>
+                                </li>
+                                <li>
+                                    <a href="#">Essentials</a>
+                                </li>
+                                <li>
+                                    <a href="#">Headphones</a>
+                                </li>
+                                <li>
+                                    <a href="#">Men</a>
+                                </li>
+                                <li>
+                                    <a href="#">Women</a>
+                                </li>
+                                <li>
+                                    <a href="#">Shoes</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div> <!-- .widget-categories end -->
+                    <!-- Recent Products
+                    ============================================= -->
+                    <div class="widget widget-recent-products">
+                        <div class="widget--title">
+                            <h5>Best Sellers</h5>
+                        </div>
+                        <div class="widget--content">
+                            <!-- Product #1 -->
+                            <div class="product clearfix">
+                                <img src="assets/images/shop/thumb/3.jpg" alt="product"/>
+                                <div class="product-desc">
+                                    <div class="product-title">
+                                        <a href="#">Red Tape Lace Up Shoes In Tan Leather</a>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span>$4138.99</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- .recent-product end -->
+
+                            <!-- Product #2 -->
+                            <div class="product clearfix">
+                                <img src="assets/images/shop/thumb/4.jpg" alt="product"/>
+                                <div class="product-desc">
+                                    <div class="product-title">
+                                        <a href="#">Brave Soul Crew Neck Military Sweater</a>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span>$23.99</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- .recent-product end -->
+                        </div>
+
+                    </div> <!-- .widget-recent end -->
+
+                    <!-- Filter
+                    ============================================= -->
+                    <div class="widget widget-filter">
+                        <div class="widget--title">
+                            <h5>Filter By Price</h5>
+                        </div>
+                        <div class="widget--content">
+                            <div id="slider-range"></div>
+                            <p>
+                                <label for="amount">Price: </label>
+                                <input type="text" id="amount" readonly>
+                            </p>
+                            <a class="btn btn--secondary btn--bordered btn--rounded" href="#">Filter Now</a>
+                        </div>
+                    </div><!-- .widget-filter end -->
+
+                    <!-- Tag Clouds
+                    ============================================= -->
+                    <div class="widget widget-tags">
+                        <div class="widget--title">
+                            <h5>tag clouds</h5>
+                        </div>
+                        <div class="widget--content">
+                            <a href="#">responsive</a>
+                            <a href="#">modern</a>
+                            <a href="#">corporate</a>
+                            <a href="#">business</a>
+                            <a href="#">fresh</a>
+                            <a href="#">awesome</a>
+                            <a href="#">business</a>
+                            <a href="#">fresh</a>
+                            <a href="#">corporate</a>
+                        </div>
+                    </div> <!-- .widget-tags end -->            </div>
+                <!-- .sidebar-full end -->
+            </div>
+            <!-- .row end -->
+
+        </div>
+        <!-- .container end -->
+    </section>
+    <!-- #product end -->
+
+    <div class="clearfix mb-150"></div>
+
+
+    <!-- Footer #1
+    ============================================= -->
+    <% include partials/footer.ejs %>
+</div><!-- #wrapper end -->
+<div id="gotoTop" class="fa fa-angle-up"></div>
+<!-- Footer Scripts
+============================================= -->
+<script src="/assets/js/jquery-2.2.4.min.js"></script>
+<script src="/assets/js/plugins.js"></script>
+<script src="/assets/js/functions.js"></script>
+<script src="/js/functions.js"></script>
+<!-- RS5.0 Core JS Files -->
+<script src="/assets/revolution/js/jquery.themepunch.tools.min.js?rev=5.0"></script>
+<script src="/assets/revolution/js/jquery.themepunch.revolution.min.js?rev=5.0"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<!-- RS Confi/gration JS Files -->
+<script src="/assets/js/rsconfig.js"></script>
+</body>
+</html>

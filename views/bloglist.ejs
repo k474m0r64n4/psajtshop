@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <% include partials/scripts.ejs %>
+    <!-- Document Title
+        ============================================= -->
+    <title>Psajt - <%= title %></title>
+</head>
+<body class="page-dark">
+<div class="preloader">
+    <div class="load-bar">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</div><!-- Document Wrapper
+	============================================= -->
+<div id="wrapper" class="wrapper clearfix">
+    <% include partials/header.ejs %>
+
+    <section id="tabs2" class="tabs tabs-2 text-center bg-white">
+        <% include partials/kategorije.ejs %>
+    </section> <!-- #tabs2 end -->
+    <section id="blog" class="blog blog-grid">
+        <div class="container">
+            <div class="row">
+                <h2 class="heading--title">Najnovije</h2>
+                <% if(data) { %>
+                <% data.forEach(function (novost) { %>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="blog-entry">
+                        <div class="entry--img">
+                            <a href="/novosti/<%= novost._id %>">
+                                <img src="/images/blog/<%= novost.image %>" alt="entry image"/>
+                            </a>
+                        </div>
+                        <div class="entry--content">
+                            <div class="entry--meta">
+                                <span class="entry--meta-date"><%= moment(novost.createdOn).format("Do MMM YYYY");%></span>
+                                <span class="entry--meta-cat" ><a href="/novosti/<%= novost.category %>/1" style="color: <%= novost.color %>"><%= novost.category %></a></span>
+                            </div>
+                            <div class="entry--title" style="height: 45px">
+                                <h4><a href="/novosti/<%= novost._id %>"><%= novost.title %></a></h4>
+                            </div>
+                            <div class="entry--bio" style="height: 130px">
+                                <%- novost.description %>
+                            </div>
+                            <div class="entry--footer">
+
+                            </div>
+                        </div>
+                        <!-- .entry-content end -->
+                    </div>
+                    <!-- .blog-entry end -->
+                </div>
+                <% });} %>
+
+            </div>
+            <% if(pages != 1){%>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 clearfix mt-20 text--center">
+                    <ul class="pagination">
+
+                        <% if(current != 1) {    %>
+                        <li>
+                            <a href="/novosti?page=<%= current - 1 %>" aria-label="Prev">
+                                <span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
+                            </a>
+
+                        </li>
+                        <% } %>
+
+                        <% for( i=1; i<=pages; i++ ) { %>
+                        <li><a href="/novosti?page=<%= i%>"><%= i%></a>
+
+                            <%}%>
+                            <% if(pages) {    %>
+
+                            <% if(current != pages) {    %>
+                        <li>
+                            <a href="/novosti?page=<%= parseInt(current) + 1; %>" aria-label="Next">
+                                <span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+                            </a>
+                        </li>
+                        <% }} %>
+                    </ul>
+                </div>
+                <!-- .col-md-12 end -->
+
+            </div>
+            <% } %>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12" style="padding-top: 100px">
+
+                    <div class="row ">
+                        <h2 class="heading--title">Najpopularnije</h2>
+                        <!-- Blog Entry #1 -->
+                        <% if(popular){ %>
+                        <% popular.forEach(function (novost) { %>
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="blog-entry">
+                                <div class="entry--img">
+                                    <a href="/novosti/<%= novost.slug %>">
+                                        <img src="/images/blog/<%= novost.image %>" alt="entry image"/>
+                                    </a>
+                                </div>
+                                <div class="entry--content">
+                                    <div class="entry--meta">
+                                        <span class="entry--meta-date"><%= moment(novost.createdOn).format("Do MMM YYYY");%></span>
+                                        <span class="entry--meta-cat" ><a href="<%= novost.category %>"  style="color:red"><%= novost.category %></a></span>
+                                    </div>
+                                    <div class="entry--title">
+                                        <h4><a href="/novosti/<%= novost._id %>"><%= novost.title %></a></h4>
+                                    </div>
+                                    <div class="entry--bio">
+                                        <%- novost.description %>
+                                    </div>
+
+                                </div>
+                                <!-- .entry-content end -->
+                            </div>
+                            <!-- .blog-entry end -->
+                        </div>
+                        <% });} %>
+                        <!-- .col-md-4 end -->
+
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- .row end -->
+
+        <!-- .container end -->
+    </section>
+    <div class="clearfix mb-150"></div>
+
+
+    <!-- Footer #1
+    ============================================= -->
+    <% include partials/footer.ejs %>
+</div><!-- #wrapper end -->
+<div id="gotoTop" class="fa fa-angle-up"></div>
+<!-- Footer Scripts
+============================================= -->
+<script src="/assets/js/jquery-2.2.4.min.js"></script>
+<script src="/assets/js/plugins.js"></script>
+<script src="/assets/js/functions.js"></script>
+<script src="/js/functions.js"></script>
+<!-- RS5.0 Core JS Files -->
+<script src="/assets/revolution/js/jquery.themepunch.tools.min.js?rev=5.0"></script>
+<script src="/assets/revolution/js/jquery.themepunch.revolution.min.js?rev=5.0"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<!-- RS Confi/gration JS Files -->
+<script src="/assets/js/rsconfig.js"></script>
+</body>
+</html>

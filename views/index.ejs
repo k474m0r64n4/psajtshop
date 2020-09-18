@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <% include partials/scripts.ejs %>
+
+  <!-- Document Title
+      ============================================= -->
+  <title>Psajt</title>
+</head>
+<body class="page-dark">
+<div class="preloader">
+  <div class="load-bar">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+</div><!-- Document Wrapper
+	============================================= -->
+<div id="wrapper" class="wrapper clearfix">
+    <% include partials/header.ejs %>
+
+
+  <!-- Feature #2
+  ============================================= -->
+  <section id="feature2" class="feature feature-2 text-center bg-white" style="padding-bottom: 10px">
+    <div class="container">
+      <div class="row">
+        <!-- Portfolio Filter
+        ============================================= -->
+        <div class="col-xs-12 col-sm-12 col-md-8 portfolio-filter pr-50 text--left">
+          <div class="heading heading-7 mb-60 pull-left">
+            <h2 class="heading--title">Dobrodošli!</h2>
+
+            <p class="heading--desc">Dobrodošli na <font color="762cc9">p</font><font color="4455cb">s</font><font color="33eeaa">a</font><font color="e3f94f">j</font><font color="f2c049">t</font> - virtuelni prostor u kom bez muke možete doći do pouzdanih informacija o psihodelicima i savremenim dešavanjima u vezi sa njima. </p>
+          </div>
+
+        </div>
+        <!-- .Portfolio-filter end -->
+        <div class="col-xs-12 col-sm-12 col-md-4">
+          <!-- Portfolio #1 -->
+          <div class="portfolio-item" >
+            <div class="portfolio--img">
+              <img src="/images/logo/index.png" alt="Portfolio Item">
+              <div class="portfolio--hover" onclick="">
+                <div class="portfolio--action" style="background-color: rgba(165, 131, 53, 0)">
+                  <div class="pos-vertical-center">
+                    <div class="portfolio--title">
+                      <h4><a href="/onama">O nama</a></h4>
+                    </div>
+
+                  </div>
+                </div>
+                <!-- .Portfolio-action end -->
+              </div>
+              <!-- .Portfolio-hover end -->
+            </div>
+            <!-- .Portfolio-img end -->
+          </div>
+          <!-- . portfolio-item end -->
+        </div>
+      </div>
+
+
+      <!-- .row end -->
+    </div>
+    <!-- .container end -->
+  </section>
+
+
+
+  <section id="blog" class="blog blog-carousel pb-90 bg-gray">
+    <div class="container">
+      <div class="row clearfix">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+          <div class="heading heading-1 mb-60 text--center">
+            <p class="heading--subtitle">Vesti i članci</p>
+            <h2 class="heading--title"><a href="/novosti">Novosti</a></h2>
+            <div class="divider--line divider--center"></div>
+            <p class="heading--desc mb-0">Najnovije psihodelične vesti iz sveta nauke i kulture:</p>
+          </div>
+        </div>
+        <!-- .col-md-6 end -->
+      </div>
+      <!-- .row end -->
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="carousel carousel-dots carousel-theme" data-slide="3" data-slide-rs="2" data-autoplay="true" data-nav="false" data-dots="true" data-space="25" data-loop="true" data-speed="800">
+            <!-- Blog Entry #1 -->
+            <% if(data) { %>
+            <% data.slice(0,6).forEach(function (blog) { %>
+            <div class="blog-entry">
+              <div class="entry--content">
+                <div class="entry--meta">
+                  <span class="entry--meta-date"><%= moment(blog.createdOn).format("Do MMM YY");%></span>
+                  <span class="entry--meta-cat"><a href="/novosti?category=<%= blog.category %>"><%= blog.category %></a></span>
+                </div>
+                <div class="entry--title">
+                  <h4><a href="/novosti/<%= blog._id %>"><%= blog.title %></a></h4>
+                </div>
+                <div class="entry--bio">
+                  <%- blog.description %>
+                </div>
+
+              </div>
+              <!-- .entry-content end -->
+            </div>
+            <% })} %>
+          </div>
+          <!-- .carousel end -->
+        </div>
+        <!-- .col-md-12 end -->
+      </div>
+      <!-- .row end -->
+    </div>
+    <!-- .container end -->
+  </section>
+
+
+  <section id="feature8" class="feature feature-2 text-center bg-white" style="padding-top:10px">
+    <div class="container">
+      <div class="row">
+        <!-- Portfolio Filter
+        ============================================= -->
+        <div class="col-xs-12 col-sm-12 col-md-8 portfolio-filter pr-50 text--left">
+          <div class="heading heading-7 mb-60 pull-left">
+            <h2 class="heading--title"><a href="/psihodelici">Psihodelici</a></h2>
+            <p class="heading--desc">ψυχή (<b>psukhḗ</b>) - <i>duša</i> + δῆλος (<b>dêlos</b>) - <i>vidljiv, manifestan</i>  </p>
+          </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 portfolio-filter pr-50 text--right">
+          <ul class="list-inline mb-0" style="padding-left: 20px">
+            <li><a  href="#" data-filter="*"><span style="font-size: 32px; "><i class="fas fa-plus"></i></span></a></li>
+            <li><a class="active-filter" href="#" data-filter=".filter-print"><span style="font-size: 32px; "><i class="fas fa-minus"></i></span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="portfolio-all" class="row portfolio-spaced portfolio-masonry">
+        <% if(psy){%>
+        <% psy.forEach(function (psy) { %>
+        <div class="portfolio-item filter-print">
+          <div class="portfolio--img">
+            <img src="/images/psihodelici/<%= psy.molecul %>" alt="Portfolio Item">
+            <div class="portfolio--hover" onclick="">
+              <div class="portfolio--action">
+                <div class="pos-vertical-center">
+                  <div class="portfolio--title">
+                    <h4><a href="/psihodelici/<%= psy._id %>"><%= psy.name %></a></h4>
+                  </div>
+
+                </div>
+              </div>
+              <!-- .Portfolio-action end -->
+            </div>
+            <!-- .Portfolio-hover end -->
+          </div>
+          <!-- .Portfolio-img end -->
+        </div>
+        <% })} %>
+        <div class="portfolio-item filter-design">
+          <div class="portfolio--img">
+            <img src="/images/psihodelici/" alt="Portfolio Item">
+            <div class="portfolio--hover" onclick="">
+              <div class="portfolio--action">
+                <div class="pos-vertical-center">
+                  <div class="portfolio--title">
+                    <h4><a href="/psihodelici/">j</a></h4>
+                  </div>
+
+                </div>
+              </div>
+              <!-- .Portfolio-action end -->
+            </div>
+            <!-- .Portfolio-hover end -->
+          </div>
+          <!-- .Portfolio-img end -->
+        </div>
+      </div>
+
+      <!-- .row end -->
+    </div>
+    <!-- .container end -->
+  </section>
+
+  <section id="blog1" class="blog blog-grid" >
+    <div class="container">
+      <div class="row" style="padding-bottom: 60px">
+        <h2 class="heading--title"><a href="/novosti?category=kultura">Kultura</a></h2>
+        <!-- Blog Entry #1 -->
+        <% if(kultura) { %>
+        <% kultura.forEach(function (blog) { %>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="blog-entry">
+            <div class="entry--img">
+              <a href="/novosti/<%= blog._id %>">
+                <img src="/images/blog/<%= blog.image %>" alt="entry image"/>
+              </a>
+            </div>
+            <div class="entry--content">
+              <div class="entry--meta">
+                <span class="entry--meta-date"><%= moment(blog.createdOn).format("DD/MM/YYYY");%></span>
+                <span class="entry--meta-cat"><a href="/novosti/1" ><%= blog.category %></a></span>
+              </div>
+              <div class="entry--title">
+                <h4><a href="/novosti/<%= blog._id %>"><%= blog.title %></a></h4>
+              </div>
+              <div class="entry--bio"><%- blog.description %>
+              </div>
+
+            </div>
+            <!-- .entry-content end -->
+          </div>
+          <!-- .blog-entry end -->
+        </div>
+        <%  })} %>
+
+
+
+      </div>
+      <div class="row">
+        <h2 class="heading--title"><a href="/novosti?category=nauka">Nauka</a></h2>
+          <% if(nauka) { %>
+          <% nauka.forEach(function (blog) { %>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="blog-entry">
+            <div class="entry--img">
+              <a href="/novosti/<%= blog._id %>">
+                <img src="/images/blog/<%= blog.image %>" alt="entry image"/>
+              </a>
+            </div>
+            <div class="entry--content">
+              <div class="entry--meta">
+                <span class="entry--meta-date"><%= moment(blog.createdOn).format("DD/MM/YYYY");%></span>
+                <span class="entry--meta-cat"><a href="/novosti/1" ><%= blog.category %></a></span>
+              </div>
+              <div class="entry--title">
+                <h4><a href="/novosti/<%= blog._id %>"><%= blog.title %></a></h4>
+              </div>
+              <div class="entry--bio"><%- blog.description %>
+              </div>
+
+            </div>
+            <!-- .entry-content end -->
+          </div>
+          <!-- .blog-entry end -->
+        </div>
+        <%  })} %>
+
+      </div>
+
+    </div>
+    <!-- .container end -->
+  </section>
+
+
+
+  <!-- Footer #1
+  ============================================= -->
+    <% include partials/footer.ejs %>
+</div><!-- #wrapper end -->
+
+<div id="gotoTop" class="fa fa-angle-up"></div>
+<!-- Footer Scripts
+============================================= -->
+<script src="/assets/js/jquery-2.2.4.min.js"></script>
+<script src="/assets/js/plugins.js"></script>
+<script src="/assets/js/functions.js"></script>
+<script src="/js/functions.js"></script>
+
+<!-- RS5.0 Core JS Files -->
+<script src="assets/revolution/js/jquery.themepunch.tools.min.js?rev=5.0"></script>
+<script src="assets/revolution/js/jquery.themepunch.revolution.min.js?rev=5.0"></script>
+<script src="assets/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script src="assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script src="assets/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script src="assets/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script src="assets/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script src="assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script src="assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script src="assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<!-- RS Configration JS Files -->
+<script src="assets/js/rsconfig.js"></script>
+</body>
+</html>

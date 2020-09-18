@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <% include partials/scripts.ejs %>
+    <!-- Document Title
+        ============================================= -->
+    <title>Psajt - <%= title %></title>
+</head>
+<body class="page-dark">
+<div class="preloader">
+    <div class="load-bar">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</div><!-- Document Wrapper
+	============================================= -->
+<div id="wrapper" class="wrapper clearfix">
+    <% include partials/header.ejs %>
+
+    <section id="portfolio" class="portfolio portfolio-grid portfolio-4col bg-white">
+        <div class="container">
+            <div class="row">
+                <!-- Portfolio Filter
+                ============================================= -->
+                <div class="col-xs-12 col-sm-12 col-md-8 portfolio-filter pr-50 text--left">
+                    <div class="heading heading-7 mb-60 pull-left">
+                        <h2 class="heading--title">Psihodelici</h2>
+                        <p class="heading--desc">Psihodelici su vrsta psihoaktivnih supstanci koje izazivaju značajne promene u percepciji sebe i okoline, kao i mnogih drugih kognitivnih procesa.
+                            Termin <i> "psihodelik" </i> skovao je 1956. britanski psihijatar Hemfri Ozmond od starogrčkih reči ψυχή <b> /psukhḗ/ </b> što znači <i>duša</i> i δῆλος <b> /dêlos/ </b> - <i>vidljiv, manifestan</i>; psihodelik je dakle supstanca koja dušu čini manifestnom, a samim tim i pristupačnom za dublje istraživanje i razvoj neostvarenih potencijala ljudskog uma.  </p>
+                    </div>
+
+                </div>
+            </div>
+            <div id="portfolio-all" class="row">
+                <% if(data){ %>
+                <% data.forEach(function (psy) { %>
+                <div class="col-xs-6 col-sm-4 col-md-3 portfolio-item filter-print">
+                    <div class="portfolio--img">
+                        <img src="/images/psihodelici/<%= psy.molecul %>" alt="Portfolio Item">
+                        <div class="portfolio--hover" onclick="">
+                            <div class="portfolio--action">
+                                <div class="pos-vertical-center">
+                                    <div class="portfolio--title">
+                                        <h4><a href="/psihodelici/<%= psy._id %>"><%= psy.name %></a></h4>
+                                    </div>
+
+                                </div>
+                            </div><!-- .Portfolio-action end -->
+                        </div><!-- .Portfolio-hover end -->
+                    </div><!-- .Portfolio-img end -->
+                </div><!-- . portfolio-item end -->
+
+                <% });} %>
+
+
+
+            </div><!-- .row end -->
+            <!-- .row end -->
+            <div class="row">
+
+            </div><!-- .row end -->
+        </div><!-- .container end -->
+    </section><!-- #portfolio end -->
+
+
+
+
+    <!-- Footer #1
+    ============================================= -->
+    <% include partials/footer.ejs %>
+</div><!-- #wrapper end -->
+<div id="gotoTop" class="fa fa-angle-up"></div>
+<!-- Footer Scripts
+============================================= -->
+<script src="/assets/js/jquery-2.2.4.min.js"></script>
+<script src="/assets/js/plugins.js"></script>
+<script src="/assets/js/functions.js"></script>
+<script src="/js/functions.js"></script>
+<!-- RS5.0 Core JS Files -->
+<script src="/assets/revolution/js/jquery.themepunch.tools.min.js?rev=5.0"></script>
+<script src="/assets/revolution/js/jquery.themepunch.revolution.min.js?rev=5.0"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script src="/assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<!-- RS Confi/gration JS Files -->
+<script src="/assets/js/rsconfig.js"></script>
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Psajt Admin panel">
+    <meta name="keywords" content="admin,dashboard">
+    <meta name="author" content="psajt">
+    <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Psajt Admin</title>
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+    <link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/plugins/font-awesome/css/all.min.css" rel="stylesheet">
+    <link href="/plugins/DataTables/datatables.min.css" rel="stylesheet">
+
+    <link href="/css/dark_theme.css" rel="stylesheet">
+
+    <!-- Theme Styles -->
+    <link href="/css/connect.min.css" rel="stylesheet">
+    <link href="/css/admin3.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
+
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+
+</head>
+<body>
+<div class='loader'>
+    <div class='spinner-grow text-primary' role='status'>
+        <span class='sr-only'>Loading...</span>
+    </div>
+</div>
+<div class="connect-container align-content-stretch d-flex flex-wrap">
+    <% include ../partials/sidebar.ejs %>
+    <div class="page-container">
+        <% include ../partials/adminheader.ejs %>
+        <div class="page-content">
+            <div class="page-info">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Apps</a></li>
+                        <li class="breadcrumb-item"><a href="/admin/psy">Psihodelici</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><%= data[0].name %></li>
+                    </ol>
+                </nav>
+                <div class="page-options">
+                    <form action="/admin/psy/delete/<%= data[0]._id %>" method="post">
+                        <button type="submit" class="btn btn-danger" onclick="alert('Delete?');">Delete!</button>
+                    </form>
+
+                </div>
+            </div>
+            <div class="main-wrapper">
+                <% if (data[0]) {%>
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= data[0].name %></h5>
+                                <p class="card-text">
+                                    info: <%- data[0].info.history %>
+                                </p>
+                                <p class="card-text">
+                                    <%- data[0].description%>
+                                </p>
+                                <p class="card-text">
+                                    <%- data[0].content_text %>
+                                </p>
+
+
+                                <a  data-toggle="collapse" href="#desc" role="button" aria-expanded="false" aria-controls="desc">Edit</a>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="collapse multi-collapse" id="desc">
+                                            <div class="card card-body">
+                                                <form action='/admin/psy/updateinfo/<%= data[0]._id %>' method='post'>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <label>Subname: </label>
+                                                            <input class="form-control" name="subname" id="subname" type="text" value="<%= data[0].subname %>">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <label>Ukratko: </label>
+                                                            <textarea class="form-control" id="ukratko" name="ukratko" ><%- data[0].info.overview %></textarea>
+                                                            <script>
+                                                                CKEDITOR.replace( 'ukratko' );
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <label>Istorijat: </label>
+                                                            <textarea class="form-control"  name="istorijat" id="istorijat"  rows="3"><%- data[0].info.history %></textarea>
+                                                            <script>
+                                                                CKEDITOR.replace( 'istorijat' );
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <label>farmakologija: </label>
+                                                            <textarea class="form-control"  name="farmakologija" id="farmakologija"  rows="3"><%- data[0].info.pharmacology %></textarea>
+                                                            <script>
+                                                                CKEDITOR.replace( 'farmakologija' );
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <label>efekti: </label>
+                                                            <textarea class="form-control"  name="efekti" id="efekti"  rows="3"><%- data[0].info.effects %></textarea>
+                                                            <script>
+                                                                CKEDITOR.replace( 'efekti' );
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <label>mitovi: </label>
+                                                            <textarea class="form-control"  name="mitovi" id="mitovi"  rows="3"><%- data[0].info.myths %></textarea>
+                                                            <script>
+                                                                CKEDITOR.replace( 'mitovi' );
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <label>svojstva: </label>
+                                                            <textarea class="form-control"  name="svojstva" id="svojstva"  rows="3"><%- data[0].info.therapeuticuse %></textarea>
+                                                            <script>
+                                                                CKEDITOR.replace( 'svojstva' );
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <button class="btn btn-primary" type="submit" name="Submit">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Doziranje/Trajanje: </h5>
+
+                                <a  data-toggle="collapse" href="#dose" role="button" aria-expanded="false" aria-controls="dose">Edit</a>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="collapse multi-collapse" id="dose">
+                                            <div class="card card-body">
+                                                <form action='/admin/psy/updatedose/<%= data[0]._id %>' method='post'>
+
+                                                    <label>Doziranje: </label>
+                                                    <div class="col-md">
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <label>threshold: </label>
+                                                            <input class="form-control" name="threshold" id="threshold" type="text" value="<%= data[0].dose.threshold %>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md">
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <label>light: </label>
+                                                            <input class="form-control" name="light" id="light" type="text" value="<%= data[0].dose.light %>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md">
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <label>common: </label>
+                                                            <input class="form-control" name="common" id="common" type="text" value="<%= data[0].dose.common %>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md">
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <label>strong: </label>
+                                                            <input class="form-control" name="strong" id="strong" type="text" value="<%= data[0].dose.strong %>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md">
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <label>heavy: </label>
+                                                            <input class="form-control" name="heavy" id="heavy" type="text" value="<%= data[0].dose.heavy %>">
+                                                        </div>
+                                                    </div>
+
+                                                    <label>Trajanje: </label>
+                                                    <div class="col-md">
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <label>total: </label>
+                                                            <input class="form-control" name="total" id="total" type="text" value="<%= data[0].duration.total %>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md">
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <label>onset: </label>
+                                                            <input class="form-control" name="onset" id="onset" type="text" value="<%= data[0].duration.onset %>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md">
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <label>comeup: </label>
+                                                            <input class="form-control" name="comeup" id="comeup" type="text" value="<%= data[0].duration.comeup %>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md">
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <label>peak: </label>
+                                                            <input class="form-control" name="peak" id="peak" type="text" value="<%= data[0].duration.peak %>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md">
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <label>offset: </label>
+                                                            <input class="form-control" name="offset" id="offset" type="text" value="<%= data[0].duration.offset %>">
+                                                        </div>
+                                                    </div>
+
+                                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Image: </h5>
+                                <img src="/images/psihodelici/<%= data[0].image %>" style="width: 100%" >
+
+                                <h5 class="card-title">Molecul: </h5>
+                                <img src="/images/psihodelici/<%= data[0].molecul %>" style="width: 100%" >
+
+                                <a  data-toggle="collapse" href="#status" role="button" aria-expanded="false" aria-controls="status">Edit</a>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="collapse multi-collapse" id="status">
+                                            <div class="card card-body">
+                                                <form ref='uploadForm'
+                                                      id='uploadForm'
+                                                      action='/admin/psy/updateimage/<%= data[0]._id %>'
+                                                      method='post'
+                                                      encType="multipart/form-data">
+                                                    <div class="col-md-6">
+                                                        <label>Slika: </label>
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <input type="text" name="image" id="image"  value="<%= data[0].image %>" >
+                                                        </div>
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <input type="file" name="img" id="img">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>Molekul: </label>
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <input type="text" name="molecul" id="molecul"  value="<%= data[0].molecul %>" >
+                                                        </div>
+                                                        <div class="form-group organic-form xs-radius">
+                                                            <input type="file" name="mol" id="mol">
+                                                        </div>
+                                                    </div>
+
+                                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <% } %>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="footer-text">2020 © Psajt ORG</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mailbox-compose-overlay"></div>
+<div class="mailbox-item-overlay"></div>
+
+<!-- Javascripts -->
+<script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
+<script src="/plugins/bootstrap/popper.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/js/connect.min.js"></script>
+<script src="/js/pages/todo.js"></script>
+
+<script src="/plugins/DataTables/datatables.min.js"></script>
+<script src="/js/pages/datatables.js"></script>
+
+<script >
+    $(document).ready(function() {
+        $("#input-5").fileinput({showCaption: false});
+
+        $("#input-6").fileinput({
+            showUpload: false,
+            maxFileCount: 10,
+            mainClass: "input-group-lg",
+            showCaption: true
+        });
+
+        $("#input-8").fileinput({
+            mainClass: "input-group-md",
+            showUpload: true,
+            previewFileType: "image",
+            browseClass: "btn btn-success",
+            browseLabel: "Pick Image",
+            browseIcon: "<i class=\"icon-picture\"></i> ",
+            removeClass: "btn btn-danger",
+            removeLabel: "Delete",
+            removeIcon: "<i class=\"icon-trash\"></i> ",
+            uploadClass: "btn btn-info",
+            uploadLabel: "Upload",
+            uploadIcon: "<i class=\"icon-upload\"></i> "
+        });
+
+        $("#input-9").fileinput({
+            previewFileType: "text",
+            allowedFileExtensions: ["txt", "md", "ini", "text"],
+            previewClass: "bg-warning",
+            browseClass: "btn btn-primary",
+            removeClass: "btn btn-secondary",
+            uploadClass: "btn btn-secondary",
+        });
+
+        $("#input-10").fileinput({
+            showUpload: false,
+            layoutTemplates: {
+                main1: "{preview}\n" +
+                "<div class=\'input-group {class}\'>\n" +
+                "   <div class=\'input-group-append\'>\n" +
+                "       {browse}\n" +
+                "       {upload}\n" +
+                "       {remove}\n" +
+                "   </div>\n" +
+                "   {caption}\n" +
+                "</div>"
+            }
+        });
+
+        $("#input-11").fileinput({
+            maxFileCount: 10,
+            allowedFileTypes: ["image", "video"]
+        });
+
+        $("#input-12").fileinput({
+            showPreview: false,
+            allowedFileExtensions: ["zip", "rar", "gz", "tgz"],
+            elErrorContainer: "#errorBlock"
+        });
+    });
+
+</script>
+</body>
+</html>
